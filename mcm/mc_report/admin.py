@@ -1,8 +1,5 @@
 from django.contrib import admin
-from .models import User
-from .models import L1_Name
-from .models import Issue_History
-from .models import Alarm
+from .models import User, L1_Name, Issue_History, Alarm
 
 # Register your models here.
 
