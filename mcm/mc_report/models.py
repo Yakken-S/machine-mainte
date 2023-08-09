@@ -19,7 +19,7 @@ class L1_Name(models.Model):
     UpdatedId = models.CharField(max_length=5)
     
     def __str__(self):
-        return self.L1_Name
+        return self.L1_Name,self.MachineName
 
 class Issue_History(models.Model):
     L1_Name = models.CharField(max_length=10)
