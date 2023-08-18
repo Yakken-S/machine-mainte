@@ -11,9 +11,14 @@ class L1_Name(models.Model):
     machine_type = models.CharField(max_length=10)
     created_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="created_id_l1_name")
     updated_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="updated_id_l1_name")
-
+    status_types = (
+        ('01','正常'),
+        ('02','修理中/稼働可能') ,
+        ('03','修理中/稼働不可')
+    )
+    machine_status = models.CharField(max_length=20, choices=status_types, blank=True)
     def __str__(self):
-        return self.l1_name,self.machine_name
+        return f"{self.l1_name} - {self.machine_name}"
 
 class Issue_History(models.Model):
     l1_name = models.ForeignKey('L1_Name', on_delete=models.CASCADE, related_name="l1_name_issue")
@@ -22,7 +27,7 @@ class Issue_History(models.Model):
         ('01','機械不具合'),
         ('02','電気不具合'),
         ('03','システム不具合'),
-        ('04','加工精度不良'),
+        ('04','加工精度不良')
     )
     issue_type = models.CharField(max_length=20, choices=issue_types, blank=True)
     issue_title = models.TextField()
