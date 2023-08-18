@@ -39,10 +39,10 @@ class Issue_History(models.Model):
     updated_at  = models.DateTimeField(auto_now=True)
     created_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="created_l1_name_issue")
     updated_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="updated_l1_name_issue")
-    file_quotation = models.FileField()
-    file_report  = models.FileField()
-    file_image1  = models.FileField()
-    file_image2  = models.FileField()
+    file_quotation = models.FileField(blank=True)
+    file_report  = models.FileField(blank=True)
+    file_image1  = models.FileField(blank=True)
+    file_image2  = models.FileField(blank=True)
     
     def __str__(self):
         return f"{self.l1_name} - {self.alarm_num} - {self.issue_title}"
