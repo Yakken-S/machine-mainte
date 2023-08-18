@@ -1,49 +1,44 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth import get_user_model 
 
 # Create your models here.
-class User(models.Model):
-    UserId = models.CharField(max_length=5)
-    UserName = models.CharField(max_length=100)
-    Password = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.UserName
 
 class L1_Name(models.Model):
-    L1_Name = models.CharField(max_length=10)
-    MachineName = models.CharField(max_length=20)
-    MachineType = models.CharField(max_length=10)
-    CreatedId = models.CharField(max_length=5)
-    UpdatedId = models.CharField(max_length=5)
-    
+    l1_name = models.CharField(max_length=10, unique=True)
+    machine_name = models.CharField(max_length=20)
+    machine_type = models.CharField(max_length=10)
+    created_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="created_id_l1_name")
+    updated_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="updated_id_l1_name")
+
     def __str__(self):
-        return self.L1_Name,self.MachineName
+        return self.l1_name,self.machine_name
 
 class Issue_History(models.Model):
-    L1_Name = models.CharField(max_length=10)
-    AlarmNum = models.CharField(max_length=10)
-    IssueType = models.TextField()
-    IssueTitle = models.TextField()
-    IssueDetail = models.TextField()
-    IssueDatetime = models.DateTimeField(default=timezone.now)
-    CreatedAt = models.DateTimeField(default=timezone.now)
-    UpdatetedAt = models.DateTimeField(default=timezone.now)
-    UserId = models.CharField(max_length=5)
-    UpdatedId = models.CharField(max_length=5)
-    File_Quotation = models.FileField()
-    File_Report  = models.FileField()
-    File_Image1  = models.FileField()
-    File_Image2  = models.FileField()
+    l1_name = models.ForeignKey('L1_Name', on_delete=models.CASCADE, related_name="l1_name_issue")
+    alarm_num = models.ForeignKey('Alarm', on_delete=models.CASCADE, related_name="alarm_nums_issue")
+    issue_type = models.TextField()
+    issue_title = models.TextField()
+    issue_detail = models.TextField()
+    issue_freeinput = models.TextField()
+    issue_datetime = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at  = models.DateTimeField(auto_now=True)
+    created_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="created_l1_name_issue")
+    updated_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="updated_l1_name_issue")
+    file_quotation = models.FileField()
+    file_report  = models.FileField()
+    file_image1  = models.FileField()
+    file_image2  = models.FileField()
         
     def __str__(self):
-        return self.L1_Name, self.AlarmNum, self.IssueTitle
+        return f"{self.l1_name} - {self.alarm_num} - {self.issue_title}"
 
 
 class Alarm(models.Model):
-    AlarmNum = models.CharField(max_length=10)
-    AlarmName = models.CharField(max_length=200)
+    alarm_num = models.CharField(max_length=10)
+    alarm_name = models.CharField(max_length=200)
     
     def __str__(self):
-        return self.AlarmNum, self.AlarmName
+        return f"{self.alarm_num} - {self.alarm_name}"
