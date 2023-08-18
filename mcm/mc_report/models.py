@@ -9,6 +9,7 @@ class L1_Name(models.Model):
     l1_name = models.CharField(max_length=10, unique=True)
     machine_name = models.CharField(max_length=20)
     machine_type = models.CharField(max_length=10)
+    machine_image  = models.FileField(blank=True)
     created_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="created_id_l1_name")
     updated_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="updated_id_l1_name")
     status_types = (
