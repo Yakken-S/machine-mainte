@@ -1,0 +1,11 @@
+{% extends 'mc_report/base.html' %}
+{% block content %}
+  {% for issue in issues %}
+  <div>
+    <p>
+      <a href=>{{ issue }}</a>
+    </p> 
+  </dsiv>
+  {% endfor %}
+{% endblock %}
+
