@@ -1,11 +1,11 @@
 {% extends 'mc_report/base.html' %}
 {% block content %}
-  {% for l1name in l1names %}
-  <div>
-    <p>
-      <a href="{% url 'issue_list' pk=l1name.pk %}">{{ l1name }}</a>
-    </p> 
-  </dsiv>
-  {% endfor %}
+{% for l1name in l1names %}
+<div>
+  <p>
+    <a href="{% url 'issue_list' pk=l1name.pk %}">{{ l1name }}</a>
+  </p> 
+</dsiv>
+{% endfor %}
 {% endblock %}
 
