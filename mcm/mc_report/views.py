@@ -24,6 +24,14 @@ def post_issue(request):
 
 def update_issue(request, pk):
     issue = get_object_or_404(Issue_History, pk=pk)
-    form = PostForm(instance=issue)
-    return render(request, 'mc_report/update_issue.html', {'form': form})
 
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=issue)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('l1_list')
+    else:
+        form = PostForm(instance=issue) 
+
+    return render(request, 'mc_report/update_issue.html', {'form': form, 'issue': issue})
