@@ -18,8 +18,7 @@ def post_issue(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            # 新しく作成された投稿の詳細ページにリダイレクト
-            return redirect('issue_list', pk=post.pk)
+            return redirect('l1_list')
     else:
         form = PostForm()
     return render(request, 'mc_report/post_edit.html', {'form': form})
