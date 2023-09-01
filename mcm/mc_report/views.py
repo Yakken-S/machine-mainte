@@ -11,7 +11,6 @@ def issue_list(request, pk):
     issues = Issue_History.objects.filter(l1_name=l1_name)
     return render(request, 'mc_report/issue_list.html', {'issues': issues})
 
-
 def post_issue(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -22,3 +21,9 @@ def post_issue(request):
     else:
         form = PostForm()
     return render(request, 'mc_report/post_edit.html', {'form': form})
+
+def update_issue(request, pk):
+    issue = get_object_or_404(Issue_History, pk=pk)
+    form = PostForm(instance=issue)
+    return render(request, 'mc_report/update_issue.html', {'form': form})
+

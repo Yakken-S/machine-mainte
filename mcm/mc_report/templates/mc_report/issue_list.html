@@ -5,7 +5,7 @@
 {% for issue in issues %}
 <div>
   <p>
-    {{ issue }}
+    <a href="{% url 'update_issue' pk=issue.pk %}">{{ issue }}</a>
   </p> 
 </dsiv>
 {% endfor %}
