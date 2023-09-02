@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import L1_Name, Issue_History
 from .forms import PostForm
+from django.views.decorators.http import require_POST
 
 def l1_list(request):
     l1names = L1_Name.objects.all()
@@ -35,3 +36,9 @@ def update_issue(request, pk):
         form = PostForm(instance=issue) 
 
     return render(request, 'mc_report/update_issue.html', {'form': form, 'issue': issue})
+
+@require_POST
+def delete_issue(request, pk):
+    issue = get_object_or_404(Issue_History, pk=pk)
+    issue.delete()
+    return redirect('l1_list')
