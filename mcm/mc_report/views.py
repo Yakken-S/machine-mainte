@@ -20,10 +20,7 @@ def post_issue(request):
             post.save()
             return redirect('l1_list')
     else:
-        form = PostForm(initial={
-            "created_id": request.user, 
-            "updated_id": request.user
-        })
+        form = PostForm()
     return render(request, 'mc_report/post_edit.html', {'form': form})
 
 def update_issue(request, pk):
