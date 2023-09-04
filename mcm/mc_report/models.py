@@ -1,17 +1,19 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+class CustomUser(AbstractUser):
+    def __str__(self):
+        return self.email
 
 class L1_Name(models.Model):
     l1_name = models.CharField(max_length=10, unique=True)
     machine_name = models.CharField(max_length=20)
     machine_type = models.CharField(max_length=10)
     machine_image  = models.FileField(blank=True)
-    created_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="created_id_l1_name")
-    updated_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="updated_id_l1_name")
+    created_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="created_id_l1_name")
+    updated_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="updated_id_l1_name")
     status_types = (
         ('01','正常'),
         ('02','修理中/稼働可能') ,
@@ -35,11 +37,13 @@ class Issue_History(models.Model):
     issue_detail = models.TextField()
     issue_treatment = models.TextField()
     issue_freeinput = models.TextField()
-    issue_datetime = models.DateTimeField(default=timezone.now)
+    issue_datetime = models.DateTimeField(auto_now=True)
+    issue_fixparts = models.CharField(max_length=20)
+    issue_fixdate = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)
-    created_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="created_l1_name_issue")
-    updated_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="updated_l1_name_issue")
+    created_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="created_l1_name_issue")
+    updated_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="updated_l1_name_issue")
     file_quotation = models.FileField(blank=True)
     file_report  = models.FileField(blank=True)
     file_image1  = models.FileField(blank=True)
