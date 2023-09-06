@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import L1_Name, Issue_History
 from .forms import PostForm
 from django.views.decorators.http import require_POST
+from django.views.generic import ListView
 
 def l1_list(request):
     l1names = L1_Name.objects.all()
