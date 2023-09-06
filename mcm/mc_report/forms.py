@@ -1,15 +1,17 @@
 from django import forms
-from .models import Issue_History,CustomUser
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from .models import Issue_History
+# from .models import Issue_History,CustomUser
 
-class CustomUserCreationForm(UserCreationForm):
-    class Meta(UserCreationForm):
-        model = CustomUser
-        fields = ('username', 'email')
-class CustomUserChangeForm(UserChangeForm):
-    class Meta:
-        model = CustomUser
-        fields = ('username', 'email')
+# from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
+# class CustomUserCreationForm(UserCreationForm):
+#     class Meta(UserCreationForm):
+#         model = CustomUser
+#         fields = ('username', 'email')
+# class CustomUserChangeForm(UserChangeForm):
+#     class Meta:
+#         model = CustomUser
+#         fields = ('username', 'email')
 
 class PostForm(forms.ModelForm):
     class Meta:

@@ -1,19 +1,16 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import AbstractUser
+from accounts.models import CustomUser
 
-class CustomUser(AbstractUser):
-    def __str__(self):
-        return self.email
 
 class L1_Name(models.Model):
     l1_name = models.CharField(max_length=10, unique=True)
     machine_name = models.CharField(max_length=20)
     machine_type = models.CharField(max_length=10)
     machine_image  = models.FileField(blank=True)
-    created_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="created_id_l1_name")
-    updated_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="updated_id_l1_name")
+    created_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="created_id_l1_name", to_field="id")
+    updated_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="updated_id_l1_name", to_field="id")
     status_types = (
         ('01','正常'),
         ('02','修理中/稼働可能') ,
@@ -40,8 +37,8 @@ class Issue_History(models.Model):
     issue_datetime = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)
-    created_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="created_l1_name_issue")
-    updated_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="updated_l1_name_issue")
+    created_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="created_l1_name_issue", to_field="id")
+    updated_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="updated_l1_name_issue", to_field="id")
     file_quotation = models.FileField(blank=True)
     file_report  = models.FileField(blank=True)
     file_image1  = models.FileField(blank=True)
