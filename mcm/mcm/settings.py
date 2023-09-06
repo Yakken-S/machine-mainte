@@ -143,6 +143,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 
+<<<<<<< HEAD
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
  
@@ -161,3 +162,6 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 # # ユーザ登録時に確認メールを送信するか(none=送信しない, mandatory=送信する)
 # ACCOUNT_EMAIL_VERIFICATION = 'none'
 # ACCOUNT_EMAIL_REQUIRED = True   # ユーザ登録にメルアド必須にする
+=======
+AUTH_USER_MODEL = 'mc_report.CustomUser'
+>>>>>>> 63237a4161cd1471be41e140154dcb2f15bb5f6d

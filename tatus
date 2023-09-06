@@ -1,0 +1,33 @@
+* [33m166fcad[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m Modified....
+* [33me54a7d3[m error add accounts
+* [33me1c10fa[m add custom user
+[31m|[m * [33m63237a4[m[33m ([m[1;31morigin/master[m[33m)[m add custom user error
+[31m|[m[31m/[m  
+*   [33me3556eb[m Merge pull request #2 from takashifuruya0/test/20230902
+[33m|[m[34m\[m  
+[33m|[m * [33m503d268[m Revert "Revert "add initial""
+[33m|[m * [33md4bfa60[m Revert "add initial"
+[33m|[m * [33m93d7be4[m add initial
+[33m|[m[33m/[m  
+* [33m1b3c0b1[m add delete issue
+* [33m7f7b4c0[m Modify url view
+* [33mb3cc2f7[m Modified....
+* [33m0ba1e12[m Modified view
+* [33m25e9c00[m Modified html url
+* [33m05b55d6[m modify view url
+* [33mf361c12[m .
+* [33m2dd69d8[m Modified....
+*   [33mf7756ae[m Merge pull request #1 from takashifuruya0/test/20230823
+[35m|[m[36m\[m  
+[35m|[m * [33m6b19b2c[m fix
+[35m|[m[35m/[m  
+* [33m3196169[m Modified....
+* [33m6f7517e[m Modified urls.py,templates
+* [33m5dd94c4[m modify models
+* [33m5ea6bec[m modify models
+* [33mb1238ad[m modify models
+* [33m30d6668[m modify models
+* [33m91b61cb[m modify models
+* [33m6d47621[m 3
+* [33m8ccc6c6[m commit2
+* [33mca87711[m machine mainte app, first commit
