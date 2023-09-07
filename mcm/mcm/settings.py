@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mc_report',
     'accounts',
-    # 'django.contrib.sites', # 追加
-    # 'allauth', # 追加
-    # 'allauth.account', # 追加
-    # 'allauth.socialaccount', # 追加
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 
@@ -56,11 +56,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend', #デフォルトの認証基盤
-    'allauth.account.auth_backends.AuthenticationBackend' # メールアドレスとパスワードの両方を用いて認証するために必要
-]
 
 ROOT_URLCONF = 'mcm.urls'
 
@@ -143,25 +138,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 
-<<<<<<< HEAD
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
- 
-# # sitesフレームワーク用のサイトID
-# SITE_ID = 1
+SITE_ID = 1
 
-# # ログイン・ログアウト時のリダイレクト先
-# LOGIN_REDIRECT_URL = 'home'
-# ACCOUNT_LOGOUT_REDIRECT_URL = '/mc_report/login/'
+AUTHENTICATION_BACKENDS = [
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
-# # 認証方式を「メルアドとパスワード」に設定
-# ACCOUNT_AUTHENTICATION_METHOD = 'email'
-# # ユーザ名は使用しない
-# ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
 
-# # ユーザ登録時に確認メールを送信するか(none=送信しない, mandatory=送信する)
-# ACCOUNT_EMAIL_VERIFICATION = 'none'
-# ACCOUNT_EMAIL_REQUIRED = True   # ユーザ登録にメルアド必須にする
-=======
-AUTH_USER_MODEL = 'mc_report.CustomUser'
->>>>>>> 63237a4161cd1471be41e140154dcb2f15bb5f6d
+# ログイン・ログアウト時のリダイレクト先
+LOGIN_REDIRECT_URL = 'mc_report:index'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+#ログアウトをクリックしたらログアウト確認画面を経由しないで直接ログアウト
+ACCOUNT_LOGOUT_ON_GET = True 
+
+# ユーザ登録時に確認メールを送信するか(none=送信しない, mandatory=送信する)
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = True   # ユーザ登録にメルアド必須にする
