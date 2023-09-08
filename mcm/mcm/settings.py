@@ -71,7 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # # `allauth` needs this from django
-                # 'django.template.context_processors.request',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -113,8 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-# LANGUAGE_CODE = 'ja'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Tokyo'
@@ -150,9 +150,9 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
 
-# ログイン・ログアウト時のリダイレクト先
-LOGIN_REDIRECT_URL = 'mc_report:index'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGIN_URL = '/account/login/' # ログインURLの設定
+LOGIN_REDIRECT_URL = '/mc_report/l1_list' # ログイン後のリダイレクト先
+ACCOUNT_LOGOUT_REDIRECT_URL = '/account/login/' #　ログアウト後のリダイレクト先
 
 #ログアウトをクリックしたらログアウト確認画面を経由しないで直接ログアウト
 ACCOUNT_LOGOUT_ON_GET = True 
