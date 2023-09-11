@@ -150,9 +150,9 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
 
-LOGIN_URL = '/account/login/' # ログインURLの設定
-LOGIN_REDIRECT_URL = '/mc_report/l1_list' # ログイン後のリダイレクト先
-ACCOUNT_LOGOUT_REDIRECT_URL = '/account/login/' #　ログアウト後のリダイレクト先
+LOGIN_URL = '/accounts/login/' # ログインURLの設定
+LOGIN_REDIRECT_URL = '/' # ログイン後のリダイレクト先
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/' #　ログアウト後のリダイレクト先
 
 #ログアウトをクリックしたらログアウト確認画面を経由しないで直接ログアウト
 ACCOUNT_LOGOUT_ON_GET = True 
