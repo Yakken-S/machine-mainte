@@ -160,3 +160,5 @@ ACCOUNT_LOGOUT_ON_GET = True
 # ユーザ登録時に確認メールを送信するか(none=送信しない, mandatory=送信する)
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_REQUIRED = True   # ユーザ登録にメルアド必須にする
+
+ACCOUNT_FORMS = {'signup': 'accounts.forms.CustomUserCreationForm'}
