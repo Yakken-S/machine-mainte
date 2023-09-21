@@ -1,9 +1,14 @@
 {% extends "account/base.html" %}
-
 </html><body>
   <div class="page-header">
       <h1>issuelist</h1>
   </div>
+
+  <form class="d-flex" action="{% url 'issue_list' %}" method="get">
+    <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+  </form>
+  
   <div class="page-header">
   </div>
   <div class="content container">
