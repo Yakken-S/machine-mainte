@@ -161,4 +161,7 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_REQUIRED = True   # ユーザ登録にメルアド必須にする
 
-ACCOUNT_FORMS = {'signup': 'accounts.forms.CustomUserCreationForm'}
+ACCOUNT_FORMS = {
+    'signup': 'accounts.forms.CustomUserCreationForm',
+    'login': 'accounts.forms.CustomUserLoginForm'
+}

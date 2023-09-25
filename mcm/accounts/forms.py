@@ -18,4 +18,9 @@ class CustomUserCreationForm(SignupForm):
         fields = ('username', 'user_name')
 
 class CustomUserLoginForm(LoginForm):
-    pass
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        login_widget = forms.TextInput(
+                attrs={"placeholder": "従業員番号", "autocomplete": "username"}
+            )
+        self.fields["login"] = forms.CharField(label="従業員番号", max_length=5, widget=login_widget)
