@@ -1,21 +1,20 @@
 from django import forms
-from .models import Issue_History
-
+from .models import Issue_History,Alarm
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Issue_History
         fields = '__all__'
 
-
-class SearchForm(forms.ModelForm):
-    l1name = forms.CharField(
-        initial='',
-        label='l1_name',
-        required = False, 
-    )
-    alarmnum = forms.CharField(
+class SearchForm(forms.Form):
+    alarm_num = forms.ModelChoiceField(
+        queryset=Alarm.objects.all(),
         initial='',
         label='alarm_num',
+        required=False, 
+    )
+    text = forms.CharField(
+        initial='',
+        label='text',
         required=False, 
     )

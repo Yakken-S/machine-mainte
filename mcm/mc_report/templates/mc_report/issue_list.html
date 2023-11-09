@@ -1,7 +1,11 @@
 {% extends 'mc_report/base.html' %}
 
 {% block content %}
-
+<form method='GET'>
+  {{form}}
+  <button class='btn' type='submit' value="検索">
+    </button>
+  </form>
 {% for issue in issues %}
 <div>
   <p>
